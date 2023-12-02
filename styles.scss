@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap');
+
+$primary: hsl(270, 3%, 87%);
+$secondary: hsl(279, 6%, 55%);
+$tertiary: hsl(278, 68%, 11%);
+$input-border-active: hsl(278, 94%, 30%);
+$input-border-error: hsl(0, 100%, 66%);
+
+// reset css
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+input {
+    position: relative;
+    outline: none;
+    padding: 12px 12px;
+    font-size: 18px;
+    border: 2px solid $primary;
+    border-radius: 10px;
+}
+
+input:focus {
+    border: 2px solid $input-border-active;
+}
+
+
+main {
+    display: flex;
+    height: 100vh;
+    .left-container, .right-container {
+        height: 100%;
+        img {
+            height: 100%;
+        }
+    }
+    .left-container {
+        position: relative;
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: auto;
+        }
+        .card-front {
+            top: 20%;
+            left: 30%;
+            .absolute {
+                position: absolute;
+                top: 0;
+                .circles {
+                    padding: 15px;
+                    display: flex;
+                    align-items: center;
+                    gap: 15px;
+                    .circle-white {
+                        width: 50px;
+                        height: 50px;
+                        border-radius: 50%;
+                        background-color: white;
+                    }
+                    .circle-none {
+                        width: 25px;
+                        height: 25px;
+                        border-radius: 50%;
+                        border: 1px solid white;
+                    }
+                }
+            }
+            .credentials {
+                display: flex;
+                flex-direction: column;
+                align-items: end;
+                gap: 20px;
+                margin-top: 80px;
+                padding-left: 15px;
+                font-size: 24px;
+                letter-spacing: 5px;
+                color: white;
+                div {
+                    display: flex;
+                    font-size: 14px;
+                    justify-content: space-between;
+                    width: 100%;
+                    font-weight: bold;
+                }
+            }
+        }
+        .card-back {
+            top: 55%;
+            left: 50%;
+            .cvv {
+                position: absolute;
+                top: 42%;
+                right: 25%;
+                color: white;
+                font-size: 24px;
+            }
+        }
+    }
+    .right-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            max-width: 500px;
+            label {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                font-size: 18px;
+                color: $tertiary;
+            }
+            .details {
+                display: flex;
+                gap: 15px;
+                label {
+                    flex: 1;
+                        input {
+                        width: 100%;
+                    }
+                    .flex-input {
+                        display: flex;
+                        gap: 15px;
+                    }
+                }
+            }
+        }
+    }
+    button {
+        cursor: pointer;
+        padding: 15px 0;
+        font-size: 18px;
+        color: $primary;
+        background-color: $tertiary;
+        border: 0;
+        border-radius: 10px;
+    }
+}
