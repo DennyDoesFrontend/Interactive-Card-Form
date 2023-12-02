@@ -50,14 +50,14 @@ main {
     .left-container {
         position: relative;
         width: 40%;
-        background-image: url(/assets/bg-main-desktop.png);
+        background-image: url("bg-main-desktop.png");
         background-repeat: no-repeat;
         background-size: cover;
         .card-front {
             position: absolute;
             top: 20%;
             left: 40%;
-            background-image: url(/assets/bg-card-front.png);
+            background-image: url("bg-card-front.png");
             width: 450px;
             height: 250px;
             background-repeat: no-repeat;
@@ -253,7 +253,6 @@ main {
             .card-back {
                 left: 25%;
                 top: 0;
-                border: 2px solid wheat;
                 z-index: 0;
                 .cvv {
                     top: 42%;
