@@ -27,6 +27,18 @@ input:focus {
     border: 2px solid $input-border-active;
 }
 
+button {
+    cursor: pointer;
+    padding: 15px 200px;
+    font-size: 18px;
+    color: $primary;
+    background-color: $tertiary;
+    border: 0;
+    border-radius: 10px;
+}
+
+//end of reset
+
 
 main {
     display: flex;
@@ -133,14 +145,21 @@ main {
                 }
             }
         }
-    }
-    button {
-        cursor: pointer;
-        padding: 15px 0;
-        font-size: 18px;
-        color: $primary;
-        background-color: $tertiary;
-        border: 0;
-        border-radius: 10px;
+        .completion {
+            display: none;
+            flex-direction: column;
+            gap: 30px;
+            align-items: center;
+            h2 {
+                font-size: 45px;
+                color: $tertiary;
+                font-weight: 500;
+            }
+            p {
+                color: $secondary;
+                font-size: 18px;
+            }
+        }
     }
 }
+

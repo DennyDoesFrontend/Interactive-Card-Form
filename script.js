@@ -8,13 +8,22 @@ const cardContainer = document.querySelector('.cardContainer');
 const monthYear = document.querySelector('.monthYear');
 const cvcContainer = document.querySelector('.cvvContainer');
 let errorInfo = document.createElement('p');
+const confirmBtn = document.querySelector('.confirm-btn');
+
+//setting booleans for confirmations
+let cardHolderConfirmation = false;
+let cardNumberConfirmation = false;
+let monthNumberConfirmation = false;
+let yearNumberConfirmation = false;
+let cvvNumberConfirmation = false;
 
 cardHolder.addEventListener('input', () => {
     let result = /^[a-zA-Z ]+$/;
     var inputValue = cardHolder.value.trim();
-    if (result.test(inputValue) && inputValue.length <= 20 || inputValue == '') {
+    if (result.test(inputValue) && inputValue.length <= 20 && inputValue.length >= 5) {
         cardHolder.style.border = '2px solid hsl(278, 94%, 30%)';
         document.querySelector('.personName').textContent = inputValue.toUpperCase();
+        cardHolderConfirmation = true;
         if (nameContainer.contains(errorInfo)) {
             nameContainer.removeChild(errorInfo);
         }
@@ -26,8 +35,11 @@ cardHolder.addEventListener('input', () => {
         errorInfo.style.fontSize = '12px';
         errorInfo.textContent = 'Wrong Format, max: 20, min: 5';
         nameContainer.append(errorInfo);
+        cardHolderConfirmation = false;
     }
 });
+
+    
 
 cardNumber.addEventListener('input', () => {
     let visa =  /^4[0-9]{12}(?:[0-9]{3})?$/;
@@ -43,6 +55,7 @@ cardNumber.addEventListener('input', () => {
         // Format the card number with spaces after every 4 digits
         var formattedCardNumber = inputValue.replace(/\s/g, '').replace(/(\d{4})/g, '$1 ').trim();
         document.querySelector('.cardNumber').textContent = formattedCardNumber;
+        cardNumberConfirmation = true;
         if (cardContainer.contains(errorInfo)) {
             cardContainer.removeChild(errorInfo);
         }
@@ -54,6 +67,7 @@ cardNumber.addEventListener('input', () => {
         errorInfo.style.fontSize = '12px';
         errorInfo.textContent = 'Wrong Format';
         cardContainer.append(errorInfo);
+        cardNumberConfirmation = false;
     }
 });
 
@@ -62,6 +76,7 @@ month.addEventListener('input', ()=> {
     if (!isNaN(inputValue) && inputValue <= 12 && inputValue != 0) {
         month.style.border = '2px solid hsl(278, 94%, 30%)';
         document.querySelector('.cardMonth').textContent = inputValue;
+        monthNumberConfirmation = true;
         if (monthYear.contains(errorInfo)) {
             monthYear.removeChild(errorInfo);
         }
@@ -73,6 +88,7 @@ month.addEventListener('input', ()=> {
         errorInfo.style.fontSize = '12px';
         errorInfo.textContent = 'Wrong Format';
         monthYear.append(errorInfo);
+        monthNumberConfirmation = false;
         
     }
 });
@@ -82,6 +98,7 @@ year.addEventListener('input', ()=> {
     if (!isNaN(inputValue) && inputValue <= 99 && inputValue != 0) {
         year.style.border = '2px solid hsl(278, 94%, 30%)';
         document.querySelector('.cardYear').textContent = inputValue;
+        yearNumberConfirmation = true;
         if (monthYear.contains(errorInfo)) {
             monthYear.removeChild(errorInfo);
         }
@@ -93,6 +110,7 @@ year.addEventListener('input', ()=> {
         errorInfo.style.fontSize = '12px';
         errorInfo.textContent = 'Wrong Format';
         monthYear.append(errorInfo);
+        yearNumberConfirmation = false;
     }
 });
 
@@ -101,6 +119,7 @@ cvc.addEventListener('input', ()=> {
     if (!isNaN(inputValue) && inputValue >= 100 && inputValue <= 999) {
         cvc.style.border = '2px solid hsl(278, 94%, 30%)';
         document.querySelector('.cvv').textContent = inputValue;
+        cvvNumberConfirmation = true;
         if (cvcContainer.contains(errorInfo)) {
             cvcContainer.removeChild(errorInfo);
         }
@@ -112,7 +131,23 @@ cvc.addEventListener('input', ()=> {
         errorInfo.style.fontSize = '12px';
         errorInfo.textContent = 'Wrong Format';
         cvcContainer.append(errorInfo);
+        cvvNumberConfirmation = false;
     }
 });
 
+
+//function for the confirmation page
+function confirmationPage() {
+    let form = document.querySelector('.form');
+    let completion = document.querySelector('.completion');
+    form.style.display = 'none';
+    completion.style.display = 'flex';
+}
+
 //confirm button configuration and popup
+confirmBtn.addEventListener('click', (event) => {
+    event.preventDefault();
+    if (cardNumberConfirmation && cardHolderConfirmation && monthNumberConfirmation && yearNumberConfirmation && cvvNumberConfirmation) {
+        confirmationPage();
+    }
+})
