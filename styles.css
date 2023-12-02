@@ -40,7 +40,7 @@ main .left-container, main .right-container {
 main .left-container {
   position: relative;
   width: 40%;
-  background-image: url(/assets/bg-main-desktop.png);
+  background-image: url(bg-main-desktop.png);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -48,7 +48,7 @@ main .left-container .card-front {
   position: absolute;
   top: 20%;
   left: 40%;
-  background-image: url(/assets/bg-card-front.png);
+  background-image: url(bg-card-front.png);
   width: 450px;
   height: 250px;
   background-repeat: no-repeat;
